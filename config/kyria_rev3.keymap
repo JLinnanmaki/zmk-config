@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 
 /* Uncomment this block if using RGB
 &led_strip {
@@ -17,6 +18,50 @@
  */
 
 / {
+    behaviors {
+        question_mark: question_mark {
+            compatible = "zmk,behavior-tap-dance";
+            label = "QUESTION_MARK";
+            #binding-cells = <0>;
+            bindings = <&kp QUESTION>, <&kp EXCLAMATION>;
+        };
+
+        email: email {
+            compatible = "zmk,behavior-tap-dance";
+            label = "EMAIL";
+            #binding-cells = <0>;
+            bindings = <&kp AT_SIGN>, <&kp PERCENT>;
+        };
+
+        hipsut: hipsut {
+            compatible = "zmk,behavior-tap-dance";
+            label = "HIPSUT";
+            #binding-cells = <0>;
+            bindings = <&kp APOS>, <&kp DOUBLE_QUOTES>;
+        };
+
+        dollar_hashtag: dollar_hashtag {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DOLLAR_HASHTAG";
+            #binding-cells = <0>;
+            bindings = <&kp DOLLAR>, <&kp HASH>;
+        };
+
+        Mouse_scroll_horizontal: Mouse_scroll_horizontal {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "MOUSE_SCROLL_HORIZONTAL";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_RIGHT>, <&msc SCRL_LEFT>;
+        };
+
+        Mouse_scroll_vertical: Mouse_scroll_vertical {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "MOUSE_SCROLL_VERTICAL";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -26,29 +71,54 @@
             // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
             // | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | LAYER 1 | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
             //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+
             bindings = <
-            &kp ESC   &kp Q &kp W &kp E &kp R &kp T                                                  &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-            &kp TAB   &kp A &kp S &kp D &kp F &kp G                                                  &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-            &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp LSHFT            &mo 1   &kp LSHFT &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-                                  &kp LGUI &kp DEL &kp RET &kp SPACE &kp ESC       &kp RET &kp SPACE &kp TAB &kp BSPC &kp RALT
+&kp ESC     &kp Q           &kp W           &kp E        &kp R             &kp T                                                                 &kp Y      &kp U              &kp I        &kp O            &kp P               &none
+&caps_word  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LCTRL D  &mt LEFT_SHIFT F  &kp G                                                                 &kp H      &mt RIGHT_SHIFT J  &mt RCTRL K  &mt RIGHT_ALT L  &mt RIGHT_GUI SEMI  &kp SQT
+&email      &kp Z           &kp X           &kp C        &kp V             &kp B         &kp LSHFT    &kp LSHFT        &mo 1        &kp LSHFT    &kp N      &kp M              &kp COMMA    &kp DOT          &kp FSLH            &hipsut
+                                            &none        &question_mark    &lt 3 DELETE  &lt 2 SPACE  &lt 1 BACKSPACE  &lt 1 ENTER  &lt 2 SPACE  &lt 3 TAB  &dollar_hashtag    &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&Mouse_scroll_horizontal>,
+                <&Mouse_scroll_vertical>;
         };
-        function_layer {
+
+        numbers_and_navigation {
             // ---------------------------------------------------------------------------------------------------------------------------------
             // |       |      |BT_CLR|BTSEL0|BTSEL1|BTSEL2|                                         |      |      |      |      |      |      |
             // |       |      |      |BTSEL3|BTSEL4|      |                                         |      |      |      |      |      |      |
             // |       |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
             //                       |      |      |      |      |      |      |      |      |      |      |      |      |
+
             bindings = <
-            &trans &trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2              &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans     &bt BT_SEL 3 &bt BT_SEL 4 &trans                    &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans &trans &trans &trans
-                                 &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans
+&none  &kp HOME  &kp PG_UP  &kp PG_DN  &kp END        &none                                                &kp KP_DIVIDE    &kp KP_NUMBER_7              &kp KP_NUMBER_8  &kp KP_NUMBER_9  &none          &none
+&none  &kp LEFT  &kp UP     &kp DOWN   &kp RIGHT      &kp INSERT                                           &kp KP_MULTIPLY  &mt RIGHT_SHIFT KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_MINUS   &none
+&none  &none     &none      &kp DEL    &kp BACKSPACE  &none          &none      &none  &none  &none        &kp DELETE       &kp KP_NUMBER_1              &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp BACKSPACE  &none
+                            &none      &kp DEL        &kp BACKSPACE  &kp ENTER  &none  &none  &kp KP_PLUS  &kp KP_NUMBER_0  &kp KP_DOT                   &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings =
+                <&inc_dec_kp C_VOL_UP C_VOL_DN>,
+                <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC>;
+        };
+
+        special_characters {
+            bindings = <
+&none  &none  &none     &none     &none     &none                              &kp CARET  &kp LEFT_BRACKET  &kp LESS_THAN         &kp GREATER_THAN       &kp RIGHT_BRACKET  &none
+&none  &none  &mkp MB1  &mkp MB3  &mkp MB2  &none                              &kp TILDE  &kp LEFT_BRACE    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE    &none
+&none  &none  &none     &none     &none     &none  &none  &none  &none  &none  &none      &kp EQUAL         &kp SLASH             &kp BACKSLASH          &kp PIPE           &none
+                        &none     &none     &none  &none  &none  &none  &none  &none      &none             &none
+            >;
+        };
+
+        F-keys_and_bluetooth {
+            bindings = <
+&trans  &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN                                  &trans        &bt BT_CLR    &trans        &trans        &trans        &bt BT_CLR_ALL
+&trans  &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK                                   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans
+&trans  &kp F9  &kp F10  &kp F11  &kp F12  &kp C_PAUSE      &trans  &trans  &trans  &trans  &trans        &trans        &trans        &trans        &trans        &trans
+                         &trans   &trans   &trans           &trans  &trans  &trans  &trans  &trans        &trans        &trans
+            >;
         };
     };
 };
