@@ -56,14 +56,14 @@
             tapping-term-ms = <200>;
         };
 
-        Mouse_scroll_horizontal: Mouse_scroll_horizontal {
+        mouse_scroll_horizontal: mouse_scroll_horizontal {
             compatible = "zmk,behavior-sensor-rotate";
             label = "MOUSE_SCROLL_HORIZONTAL";
             #sensor-binding-cells = <0>;
             bindings = <&msc MOVE_X(10)>, <&msc MOVE_X(-10)>;
         };
 
-        Mouse_scroll_vertical: Mouse_scroll_vertical {
+        mouse_scroll_vertical: mouse_scroll_vertical {
             compatible = "zmk,behavior-sensor-rotate";
             label = "MOUSE_SCROLL_VERTICAL";
             #sensor-binding-cells = <0>;
@@ -117,8 +117,8 @@
             >;
 
             sensor-bindings =
-                <&Mouse_scroll_horizontal>,
-                <&Mouse_scroll_vertical>;
+                <&mouse_scroll_horizontal>,
+                <&mouse_scroll_vertical>;
         };
 
         numbers_and_navigation {
@@ -144,7 +144,7 @@
             bindings = <
 &none  &none  &mkp MB4  &none     &mkp MB5  &none                              &kp LS(RIGHT_BRACKET)  &kp RA(N8)        &kp NON_US_BACKSLASH  &kp LS(NON_US_BACKSLASH)  &kp RA(N9)                &none
 &none  &none  &mkp MB1  &mkp MB3  &mkp MB2  &none                              &kp RA(RIGHT_BRACKET)  &kp RA(N7)        &kp LS(N8)            &kp LS(N9)                &kp RA(N0)                &none
-&none  &none  &none     &none     &none     &none  &none  &none  &none  &none  &none                  &kp LS(NUMBER_6)  &kp LS(N7)            &kp RA(MINUS)             &kp RA(NON_US_BACKSLASH)  &none
+&none  &none  &none     &none     &none     &none  &none  &none  &none  &none  &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)            &kp RA(MINUS)             &kp RA(NON_US_BACKSLASH)  &none
                         &none     &none     &none  &none  &none  &none  &none  &none                  &none             &none
             >;
         };
