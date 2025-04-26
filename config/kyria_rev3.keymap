@@ -1,4 +1,4 @@
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 150  // 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 300  // 10
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -50,7 +50,7 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "MOUSE_SCROLL_HORIZONTAL";
             #sensor-binding-cells = <0>;
-            bindings = <&msc MOVE_Y(-100)>, <&msc MOVE_Y(100)>;
+            bindings = <&msc MOVE_Y(-200)>, <&msc MOVE_Y(200)>;
 
             tap-ms = <100>;
         };
@@ -59,7 +59,7 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "MOUSE_SCROLL_VERTICAL";
             #sensor-binding-cells = <0>;
-            bindings = <&msc MOVE_X(-100)>, <&msc MOVE_X(100)>;
+            bindings = <&msc MOVE_X(-200)>, <&msc MOVE_X(200)>;
 
             tap-ms = <100>;
         };
