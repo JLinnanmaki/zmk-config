@@ -50,18 +50,18 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "MOUSE_SCROLL_HORIZONTAL";
             #sensor-binding-cells = <0>;
-            bindings = <&msc MOVE_Y(-20)>, <&msc MOVE_Y(20)>;
+            bindings = <&msc MOVE_Y(-100)>, <&msc MOVE_Y(100)>;
 
-            tap-ms = <70>;
+            tap-ms = <100>;
         };
 
         mouse_scroll_vertical: mouse_scroll_vertical {
             compatible = "zmk,behavior-sensor-rotate";
             label = "MOUSE_SCROLL_VERTICAL";
             #sensor-binding-cells = <0>;
-            bindings = <&msc MOVE_X(-20)>, <&msc MOVE_X(20)>;
+            bindings = <&msc MOVE_X(-100)>, <&msc MOVE_X(100)>;
 
-            tap-ms = <70>;
+            tap-ms = <100>;
         };
 
         hml: hml {
