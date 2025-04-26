@@ -50,7 +50,7 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "LEFT_RIGHT";
             #sensor-binding-cells = <0>;
-            bindings = <&kp LEFT>, <&kp RIGHT>;
+            bindings = <&kp RIGHT>, <&kp LEFT>;
 
             tap-ms = <5>;
         };
@@ -59,7 +59,7 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "UP_DOWN";
             #sensor-binding-cells = <0>;
-            bindings = <&kp UP_ARROW>, <&kp DOWN>;
+            bindings = <&kp DOWN_ARROW>, <&kp UP_ARROW>;
 
             tap-ms = <5>;
         };
