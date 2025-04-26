@@ -50,7 +50,7 @@
             compatible = "zmk,behavior-sensor-rotate";
             label = "MOUSE_SCROLL_HORIZONTAL";
             #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+            bindings = <&kp A>, <&kp B>;
         };
 
         mouse_scroll_vertical: mouse_scroll_vertical {
@@ -96,15 +96,31 @@
         };
     };
 
+    macros {
+        email: email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp J &kp A &kp A &kp K &kp K &kp O &kp DOT &kp L &kp I &kp N &kp N &kp A &kp N &kp M &kp A &kp K &kp I &kp RA(NUMBER_2) &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "EMAIL";
+        };
+
+        phone: phone {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N0 &kp N4 &kp N0 &kp MINUS &kp N9 &kp N1 &kp N2 &kp N3 &kp N3 &kp N5 &kp N6>;
+            label = "PHONE";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&mkp MB1        &kp Q            &kp W            &kp E         &kp R                       &kp T                                                                             &kp Y      &kp U               &kp I         &kp O             &kp P                &multiply_equal
-&kp ESCAPE      &hml LEFT_GUI A  &hml LEFT_ALT S  &hml LCTRL D  &hml LEFT_SHIFT F           &kp G                                                                             &kp H      &hmr RIGHT_SHIFT J  &hmr RCTRL K  &hmr RIGHT_ALT L  &hmr RIGHT_GUI SEMI  &kp SQT
-&email_percent  &kp Z            &kp X            &kp C         &kp V                       &kp B                    &kp CAPSLOCK  &kp RA(N5)       &tog 1       &caps_word   &kp N      &kp M               &kp COMMA     &kp DOT           &kp FSLH             &hipsut
-                                                  &none         &question_mark_exclamation  &mt LEFT_CONTROL DELETE  &lt 3 SPACE   &lt 2 BACKSPACE  &lt 2 ENTER  &lt 3 SPACE  &lt 5 TAB  &dollar_hashtag     &none
+&mkp MB1        &kp Q            &kp W            &kp E         &kp R                       &kp T                                                                            &kp Y      &kp U               &kp I         &kp O             &kp P                &multiply_equal
+&kp ESCAPE      &hml LEFT_GUI A  &hml LEFT_ALT S  &hml LCTRL D  &hml LEFT_SHIFT F           &kp G                                                                            &kp H      &hmr RIGHT_SHIFT J  &hmr RCTRL K  &hmr RIGHT_ALT L  &hmr RIGHT_GUI SEMI  &kp SQT
+&email_percent  &kp Z            &kp X            &kp C         &kp V                       &kp B                    &kp RA(N5)   &tog 2           &tog 1       &kp CAPS     &kp N      &kp M               &kp COMMA     &kp DOT           &kp FSLH             &hipsut
+                                                  &email        &question_mark_exclamation  &mt LEFT_CONTROL DELETE  &lt 3 SPACE  &lt 3 BACKSPACE  &lt 3 ENTER  &lt 3 SPACE  &lt 5 TAB  &dollar_hashtag     &phone
             >;
 
             sensor-bindings =
@@ -114,19 +130,19 @@
 
         mac_hotkey {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                          &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                          &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans       &kp GLOBE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &lt 4 SPACE  &trans     &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                                                       &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mt GLOBE LS(NUMBER_4)  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &lt 4 SPACE             &trans  &trans  &lt 4 SPACE  &trans  &trans  &trans
             >;
         };
 
-        numbers_and_navigation {
+        numbers {
             bindings = <
-&none  &kp HOME       &kp PG_UP       &kp PG_DN  &kp END           &none                                                                             &kp KP_DIVIDE    &kp N7                     &kp N8         &kp N9             &kp DOT                  &none
-&none  &kp LEFT       &kp UP          &kp DOWN   &kp RIGHT         &kp INSERT                                                                        &kp KP_MULTIPLY  &hmr RIGHT_SHIFT NUMBER_4  &hmr LCTRL N5  &hmr RIGHT_ALT N6  &hmr RIGHT_GUI KP_MINUS  &none
-&none  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp DEL    &kp BACKSPACE     &none       &msc MOVE_Y(20)  &msc MOVE_Y(-20)  &msc MOVE_X(20)  &msc MOVE_X(-20)  &kp DELETE       &kp N1                     &kp NUMBER_2   &kp N3             &kp BACKSPACE            &none
-                                      &none      &kp C_PLAY_PAUSE  &kp TAB     &kp SPACE        &kp ENTER         &kp ENTER        &kp KP_PLUS       &kp KP_NUMBER_0  &kp KP_DOT                 &none
+&kp TAB    &kp DOT    &kp N7  &kp N8  &kp N9     &kp FSLH                                            &kp FSLH    &kp N7     &kp N8        &kp N9  &kp DOT        &kp TAB
+&kp SPACE  &kp MINUS  &kp N4  &kp N5  &kp N6     &kp STAR                                            &kp STAR    &kp N4     &kp N5        &kp N6  &kp MINUS      &kp SPACE
+&none      &kp DEL    &kp N1  &kp N2  &kp N3     &kp BSPC  &none     &none      &none      &none     &kp DELETE  &kp N1     &kp NUMBER_2  &kp N3  &kp BACKSPACE  &none
+                              &none   &kp COMMA  &kp N0    &kp PLUS  &kp ENTER  &kp ENTER  &kp PLUS  &kp N0      &kp COMMA  &none
             >;
 
             sensor-bindings =
@@ -134,30 +150,30 @@
                 <&inc_dec_kp C_BRIGHTNESS_INC C_BRIGHTNESS_DEC>;
         };
 
-        special_characters {
+        special_characters_nav {
             bindings = <
-&none  &none  &mkp MB4  &none     &mkp MB5  &none                              &kp LS(RIGHT_BRACKET)  &kp RA(N8)        &kp NON_US_BACKSLASH  &kp LS(NON_US_BACKSLASH)  &kp RA(N9)                &none
-&none  &none  &mkp MB1  &mkp MB3  &mkp MB2  &none                              &kp RA(RIGHT_BRACKET)  &kp RA(N7)        &kp LS(N8)            &kp LS(N9)                &kp RA(N0)                &none
-&none  &none  &none     &none     &none     &none  &none  &none  &none  &none  &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)            &kp RA(MINUS)             &kp RA(NON_US_BACKSLASH)  &none
-                        &none     &none     &none  &none  &none  &none  &none  &none                  &none             &none
+&none    &kp HOME  &kp PAGE_UP  &kp PAGE_DOWN  &kp END        &mkp MB1                              &kp LS(RIGHT_BRACKET)  &kp RA(N8)        &kp NON_US_BACKSLASH  &kp LS(NON_US_BACKSLASH)  &kp RA(N9)                &none
+&kp INS  &kp LEFT  &kp UP       &kp DOWN       &kp RIGHT      &mkp MB3                              &kp RA(RIGHT_BRACKET)  &kp RA(N7)        &kp LS(N8)            &kp LS(N9)                &kp RA(N0)                &none
+&none    &none     &none        &kp DEL        &kp BACKSPACE  &mkp MB2  &none  &none  &none  &none  &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)            &kp RA(MINUS)             &kp RA(NON_US_BACKSLASH)  &none
+                                &none          &none          &none     &none  &none  &none  &none  &none                  &none             &none
             >;
         };
 
         special_characters_MAC {
             bindings = <
-&none  &none  &mkp MB4  &none     &mkp MB5  &none                              &kp LS(RIGHT_BRACKET)  &kp RA(RS(N8))    &kp NON_US_BACKSLASH  &kp LS(NON_US_BACKSLASH)  &kp RA(RS(N9))            &none
-&none  &none  &mkp MB1  &mkp MB3  &mkp MB2  &none                              &kp RA(RIGHT_BRACKET)  &kp RA(N8)        &kp LS(N8)            &kp LS(N9)                &kp RA(N9)                &none
-&none  &none  &none     &none     &none     &none  &none  &none  &none  &none  &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)            &kp RA(MINUS)             &kp RA(NON_US_BACKSLASH)  &none
-                        &none     &none     &none  &none  &none  &none  &none  &none                  &none             &none
+&none    &kp HOME  &kp PAGE_UP  &kp PAGE_DOWN  &kp END        &mkp MB1                              &kp LS(RIGHT_BRACKET)  &kp RA(RS(N8))    &kp BACKSLASH  &kp LS(BACKSLASH)  &kp RA(RS(N9))  &none
+&kp INS  &kp LEFT  &kp UP       &kp DOWN       &kp RIGHT      &mkp MB3                              &kp RA(RIGHT_BRACKET)  &kp RA(N8)        &kp LS(N8)     &kp LS(N9)         &kp RA(N9)      &none
+&none    &none     &none        &kp DEL        &kp BACKSPACE  &mkp MB2  &none  &none  &none  &none  &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)     &kp RA(N7)         &kp RA(LA(N7))  &none
+                                &none          &none          &none     &none  &none  &none  &none  &none                  &none             &none
             >;
         };
 
         fkeys_and_bluetooth {
             bindings = <
-&none  &kp COMMA  &kp N7  &kp N8  &kp N9  &kp PLUS                                                           &kp PRINTSCREEN  &kp F1  &kp F2   &kp F3   &kp F4   &bt BT_CLR_ALL
-&none  &kp RET    &kp N4  &kp N5  &kp N6  &kp N0                                                             &kp SCROLLLOCK   &kp F5  &kp F6   &kp F7   &kp F8   &bt BT_CLR
-&none  &kp BSPC   &kp N1  &kp N2  &kp N3  &kp SPACE  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &kp PAUSE_BREAK  &kp F9  &kp F10  &kp F11  &kp F12  &out OUT_TOG
-                          &none   &none   &none      &none         &none         &none         &none         &none            &none   &none
+&none  &kp F1  &kp F2   &kp F3   &kp F4   &kp PRINTSCREEN                              &none         &bt BT_CLR    &none         &none         &none         &bt BT_CLR_ALL
+&none  &kp F5  &kp F6   &kp F7   &kp F8   &kp SCROLLLOCK                               &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none
+&none  &kp F9  &kp F10  &kp F11  &kp F12  &kp PAUSE_BREAK  &none  &none  &none  &none  &none         &none         &none         &none         &none         &out OUT_TOG
+                        &none    &none    &none            &none  &none  &none  &none  &none         &none         &none
             >;
         };
     };
