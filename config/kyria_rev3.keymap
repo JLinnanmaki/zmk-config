@@ -111,8 +111,22 @@
         phone: phone {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp N0 &kp N4 &kp N0 &kp MINUS &kp N9 &kp N1 &kp N2 &kp N3 &kp N3 &kp N5 &kp N6>;
+            bindings = <&kp N0 &kp N4 &kp N0 &kp KP_MINUS &kp N9 &kp N1 &kp N2 &kp N3 &kp N3 &kp N5 &kp N6>;
             label = "PHONE";
+        };
+
+        email2: email2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp J &kp A &kp A &kp K &kp K &kp O &kp DOT &kp L &kp I &kp N &kp N &kp A &kp N &kp M &kp A &kp K &kp I &kp RA(NUMBER_2) &kp E &kp A &kp S &kp O &kp F &kp T &kp DOT &kp F &kp I>;
+            label = "EMAIL2";
+        };
+
+        phone2: phone2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N0 &kp N5 &kp N0 &kp KP_MINUS &kp N4 &kp N1 &kp N3 &kp N4 &kp N5 &kp N5 &kp N6>;
+            label = "PHONE2";
         };
     };
 
@@ -134,10 +148,10 @@
 
         mac_hotkey {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                                                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                                                       &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &mt GLOBE LS(NUMBER_4)  &trans  &to 0   &trans       &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &lt 4 SPACE             &trans  &trans  &lt 4 SPACE  &trans  &trans  &trans
+&trans  &trans  &trans  &trans   &trans  &trans                                                       &trans  &trans  &trans   &trans  &trans  &trans
+&trans  &trans  &trans  &trans   &trans  &trans                                                       &trans  &trans  &trans   &trans  &trans  &trans
+&trans  &trans  &trans  &trans   &trans  &trans  &mt GLOBE LS(NUMBER_4)  &trans  &to 0   &trans       &trans  &trans  &trans   &trans  &trans  &trans
+                        &email2  &trans  &trans  &lt 4 SPACE             &trans  &trans  &lt 4 SPACE  &trans  &trans  &phone2
             >;
         };
 
@@ -165,9 +179,9 @@
 
         special_characters_MAC {
             bindings = <
-&none    &kp HOME  &kp PAGE_UP  &kp PAGE_DOWN  &kp END        &mkp MB1                              &kp LS(RIGHT_BRACKET)  &kp RA(RS(N8))    &kp BACKSLASH  &kp LS(BACKSLASH)  &kp RA(RS(N9))  &none
+&none    &kp HOME  &kp PAGE_UP  &kp PAGE_DOWN  &kp END        &mkp MB1                              &kp LS(RIGHT_BRACKET)  &kp RA(RS(N8))    &kp LESS_THAN  &kp LS(LESS_THAN)  &kp RA(RS(N9))  &none
 &kp INS  &kp LEFT  &kp UP       &kp DOWN       &kp RIGHT      &mkp MB3                              &kp RA(RIGHT_BRACKET)  &kp RA(N8)        &kp LS(N8)     &kp LS(N9)         &kp RA(N9)      &none
-&none    &none     &none        &kp DEL        &kp BACKSPACE  &mkp MB2  &none  &none  &none  &none  &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)     &kp RA(N7)         &kp RA(LA(N7))  &none
+&none    &none     &none        &kp DEL        &kp BACKSPACE  &mkp MB2  &none  &none  &none  &none  &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)     &kp RA(N7)         &kp LA(LS(N7))  &none
                                 &none          &none          &none     &none  &none  &none  &none  &none                  &none             &none
             >;
         };
