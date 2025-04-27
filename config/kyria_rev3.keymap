@@ -168,19 +168,19 @@
 
         special_characters_nav {
             bindings = <
-&none    &kp HOME  &kp PAGE_UP  &kp PAGE_DOWN  &kp END        &mkp MB1                                                  &kp LS(RIGHT_BRACKET)  &kp RA(N8)        &kp NON_US_BACKSLASH  &kp LS(NON_US_BACKSLASH)  &kp RA(N9)                &none
-&kp INS  &kp LEFT  &kp UP       &kp DOWN       &kp RIGHT      &mkp MB3                                                  &kp RA(RIGHT_BRACKET)  &kp RA(N7)        &kp LS(N8)            &kp LS(N9)                &kp RA(N0)                &none
-&none    &none     &none        &kp DEL        &kp BACKSPACE  &mkp MB2  &none  &none  &none           &none             &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)            &kp RA(MINUS)             &kp RA(NON_US_BACKSLASH)  &none
-                                &none          &none          &none     &none  &none  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT           &none             &none
+&none    &kp PAGE_UP    &kp HOME  &kp UP    &kp END        &mkp MB1                                                  &kp LS(RIGHT_BRACKET)  &kp RA(N8)        &kp NON_US_BACKSLASH  &kp LS(NON_US_BACKSLASH)  &kp RA(N9)                &none
+&kp INS  &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT      &mkp MB3                                                  &kp RA(RIGHT_BRACKET)  &kp RA(N7)        &kp LS(N8)            &kp LS(N9)                &kp RA(N0)                &none
+&none    &none          &none     &kp DEL   &kp BACKSPACE  &mkp MB2  &none  &none  &none           &none             &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)            &kp RA(MINUS)             &kp RA(NON_US_BACKSLASH)  &none
+                                  &none     &none          &none     &none  &none  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT           &none             &none
             >;
         };
 
         special_characters_MAC {
             bindings = <
-&none    &kp HOME  &kp PAGE_UP  &kp PAGE_DOWN  &kp END        &mkp MB1                                                  &kp LS(RIGHT_BRACKET)  &kp RA(RS(N8))    &kp GRAVE   &kp LS(GRAVE)   &kp RA(RS(N9))  &none
-&kp INS  &kp LEFT  &kp UP       &kp DOWN       &kp RIGHT      &mkp MB3                                                  &kp RA(RIGHT_BRACKET)  &kp RA(N8)        &kp LS(N8)  &kp LS(N9)      &kp RA(N9)      &none
-&none    &none     &none        &kp DEL        &kp BACKSPACE  &mkp MB2  &none  &none  &none           &none             &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)  &kp RA(RS(N7))  &kp LA(N7)      &none
-                                &none          &none          &none     &none  &none  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT           &none             &none
+&none    &kp PAGE_UP    &kp HOME  &kp UP    &kp END        &mkp MB1                                                  &kp LS(RIGHT_BRACKET)  &kp RA(RS(N8))    &kp GRAVE   &kp LS(GRAVE)   &kp RA(RS(N9))  &none
+&kp INS  &kp PAGE_DOWN  &kp LEFT  &kp DOWN  &kp RIGHT      &mkp MB3                                                  &kp RA(RIGHT_BRACKET)  &kp RA(N8)        &kp LS(N8)  &kp LS(N9)      &kp RA(N9)      &none
+&none    &none          &none     &kp DEL   &kp BACKSPACE  &mkp MB2  &none  &none  &none           &none             &kp LS(N5)             &kp LS(NUMBER_6)  &kp LS(N7)  &kp RA(RS(N7))  &kp LA(N7)      &none
+                                  &none     &none          &none     &none  &none  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT           &none             &none
             >;
         };
 
