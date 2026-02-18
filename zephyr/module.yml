@@ -1,4 +1,2 @@
 build:
-  settings:
-    board_root: zephyr/empty_boards
-    shield_root: zephyr/empty_shields
+  settings: {}
